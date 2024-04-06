@@ -6,5 +6,3 @@
 using namespace std;
 int main();
 class Car;
-//update uuu
-//offfff
