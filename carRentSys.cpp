@@ -6,8 +6,4 @@
 using namespace std;
 int main();
 class Car;
-////
-///
-//
-///
-///
+//DEVICE CHECK DONE
