@@ -20,7 +20,7 @@ class driver
 {
     string d_name;
     int age;
-    long int licence_num, cont_num, adhar;
+    long int licence_num, cont_num, aadhar;
     public:
 };
 class car: public driver
@@ -33,6 +33,7 @@ class car: public driver
 int main()
 {
     cout<<endl<<"-------------WELCOME TO CAR RENTAL PLATFORM-------------";
+    cout<<endl<<"New User ?";
     cout<<endl<<"BOOK A CAB ?";
     cout<<endl<<"WANT TO BE A TEXI DRIVER ?";
     return 0;
