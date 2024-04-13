@@ -1,7 +1,7 @@
 // CAR RENTAL AND TEXI JOB SYSTEM
 // 23AIML014_DEVANG
 // 23AIML010_OM
-// 23AIML  _ANSH
+// 23AIML019_ANSH
 
 #include<iostream>
 #include<iomanip>
@@ -19,8 +19,13 @@ class USER
     string username;
     string password;
     void new_user();
-    void sign_up();
+    static int user_count; 
+    public:
+    string get_uname(){return username;}
+    string get_pass(){return password;}
 };
+int USER:: user_count=0;
+// New user function
 void USER:: new_user()
 {
     cout<<endl<<"Enter Your name :";
@@ -34,15 +39,41 @@ void USER:: new_user()
     cout<<endl<<"Create a password for your account: ";
     cin>>password;
     cout<<endl<<"YOU HAVE ESUCCESSFULLY CREATED YOUR ACCOUNT";
+    user_count++;
+}
+void login()
+{
+    string temp_uname, temp_pass;
+    cout<<endl<<"----------- SIGN UP ----------";
+    cout<<endl<<"Enter your USERNAME : ";
+    cin>>temp_uname;
+    cout<<endl<<"ENter your password: ";
+    cin>>temp_pass;
+    int flag=0;
+    for(int i=0;i<100;i++)
+    { 
+       //compare all usernames with temp_uname, if true then flag=0;
+    }
+    if(flag==0)
+    {
+        cout<<endl<<"USERNAME NOT FOUND!! PLEASE ENTER VALID USERNAME or SIGN UP NEW USER IF NOT ";
+    }
+    else if(flag==1)
+    {
+        int flag2=0;
+        //compare passsword of user with entered passwrod(temp_pass), if true then, print login sucessfull.
+        
+    }
 }
 class driver
 {
-    string d_name;
+    string d_name; 
     int age;
     long int licence_num, cont_num, aadhar;
     public:
     driver();
 };
+// default constructor, aautomaticaly call when Inheritated Child class nitialized
 driver:: driver()
 {
     cout<<endl<<"Enter your name :";
@@ -70,13 +101,56 @@ void car:: add_texi()
    cout<<"Enter Ragistred Vehicle Number: ";
 }
 
-
+// new class : for cities and caalculating etc.
 
 int main()
 {
+    USER u[100];
+    menu:
     cout<<endl<<"-------------WELCOME TO CAR RENTAL PLATFORM-------------";
-    cout<<endl<<"New User ?";
-    cout<<endl<<"BOOK A CAB ?";
-    cout<<endl<<"WANT TO BE A TEXI DRIVER ?";
+    cout<<endl<<"BOOK A CAB ? PRESS Y : ";
+    cout<<endl<<"WANT TO BE A TEXI DRIVER ? PRESS T : ";
+    char temp;
+    cin>>temp;
+    if(temp=='Y')
+    {
+        char temp1;
+        menu1:
+        cout<<endl<<"LOGIN : PRESS L TO LOGIN";
+        cout<<endl<<"New User ? : PRESS Y";
+        cin>>temp1;
+        if(temp1=='L')
+        {
+            goto login;
+        }
+        else if(temp1=='Y')
+        {
+        // new user sign in function call
+        }
+        else{
+           cout<<endl<<"ERROR: CHOOSE VAALID OPTION";
+           goto menu1;
+        }
+        login:
+        // now login here bcz user created 
+        cout<<endl<<"Now LOGIN here:";
+        login();// login
+
+        // choosing city menu
+
+        // choosing locaations 
+
+        //calculate distance
+
+        // print reciept and booking success maassage
+    }
+    else if(temp=='T')
+    {
+        //call function new driver of class driver
+    }
+    else{
+        cout<<"ERROR: PLEASE CHOOSE VALID OPTION ";
+        goto menu;
+    }
     return 0;
 }
