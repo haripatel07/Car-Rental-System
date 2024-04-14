@@ -144,11 +144,136 @@ void car:: add_texi()
 // new class : for cities and caalculating etc.
 class book_texi
 {
-    string city[8];
+    string city[7]={"AHEMDABAD","MUMBAI","KOLKOTA", "CHENNAI", "DELHI","BANGLORE","NOIDA"};
     public:
-    void print_reciept();
-
+    void choose_journey(driver &, car &);
 };
+//choosing city
+void book_texi:: choose_journey(driver &d, car &c)
+{
+    int city1,city2, distance;
+    choose_city:
+    cout<<endl<<"CHOOSE PICK UP location: ";
+    for(int y=0;y<8;y++)
+    {
+        cout<<"["<<y<<"]   "<<city[y];
+    }
+    cin>>city1;
+    cout<<endl<<"CHOOSE DESTINATION: ";
+    for(int y=0;y<8;y++)
+    {
+        cout<<"["<<y<<"]   "<<city[y];
+    }
+    cin>>city2;
+    if(city1==city2){cout<<"CHOOSE ANOTHER OPTION"; goto choose_city;}
+    else if((city1==1 && city2==2) || (city1==2 && city2==1))
+    {
+        distance=521;
+    }
+    else if((city1==1 && city2==3) || (city1==3 && city2==1))
+    {
+        distance=2056;
+    }
+    else if((city1==1 && city2==4) || (city1==4 && city2==1))
+    {
+        distance=1821;
+    }
+    else if((city1==1 && city2==5) || (city1==5 && city2==1))
+    {
+        distance=988;
+    }
+    else if((city1==1 && city2==6) || (city1==6 && city2==1))
+    {
+        distance=1491;
+    }
+    else if((city1==1 && city2==7) || (city1==7 && city2==1))
+    {
+        distance=974;
+    }
+    else if((city1==2 && city2==3) || (city1==3 && city2==2))
+    {
+        distance=1880;
+    }
+    else if((city1==2 && city2==4) || (city1==4 && city2==2))
+    {
+        distance=1318;
+    }
+    else if((city1==2 && city2==5) || (city1==5 && city2==2))
+    {
+        distance=1401;
+    }
+    else if((city1==2 && city2==6) || (city1==6 && city2==2))
+    {
+        distance=984;
+    }
+    else if((city1==2 && city2==7) || (city1==7 && city2==2))
+    {
+        distance=1388;
+    }
+    else if((city1==3 && city2==4) || (city1==4 && city2==3))
+    {
+        distance=1672;
+    }
+    else if((city1==3 && city2==5) || (city1==5 && city2==3))
+    {
+        distance=1562;
+    }
+    else if((city1==3 && city2==6) || (city1==6 && city2==3))
+    {
+        distance=1878;
+    }
+    else if((city1==3 && city2==7) || (city1==7 && city2==3))
+    {
+        distance=1520;
+    }
+    else if((city1==4 && city2==5) || (city1==5 && city2==4))
+    {
+        distance=2207;
+    }
+    else if((city1==4 && city2==6) || (city1==6 && city2==4))
+    {
+        distance=347;
+    }
+    else if((city1==4 && city2==7) || (city1==7 && city2==4))
+    {
+        distance=2165;
+    }
+    else if((city1==5 && city2==6) || (city1==6 && city2==5))
+    {
+        distance=2180;
+    }
+     else if((city1==5 && city2==7) || (city1==7 && city2==5))
+    {
+        distance=47;
+    }
+     else if((city1==6 && city2==7) || (city1==7 && city2==6))
+    {
+        distance=2125;
+    }
+
+    int pin,temp;
+    float gst,rent,total,discount;
+    // calculation
+    rent=(16*(distance));
+    gst=(0.18*(rent));
+    total=rent+gst;
+    temp=total;
+    discount=total-temp;
+    
+    /// format of reciept is here.....
+    d.put_driverinfo();
+    c.put_texiinfo();
+    cout<<endl<<"JOUREY:  FROM: "<<city1<<"    TO:"<<city2;
+    cout<<endl<<"PIN: "<<pin;
+    cout<<endl<<"TOTAL DISTANCE: "<<distance;
+    cout<<endl<<"RENT PER kM: 16 INR";     cout<<setw(35)<<"RENT= "<<rent<<"INR";
+    cout<<endl<<"SERVICE CHARGE = 180 INR";cout<<setw(35)<<"+180 INR";
+    cout<<endl<<"GST 8%";                  cout<<setw(35)<<"+ "<<gst<<"INR";
+    cout<<endl<<"DISCOUNT ";               cout<<setw(35)<<"- "<<discount<<"INR";
+    cout<<endl<<"TOTAL FLARE ="<<total<<"/- INR";
+}
+
+
 
 int main()
 {
@@ -187,15 +312,8 @@ int main()
 
         // ________texi booking system here__________
         cout<<endl<<"CHOOSE YOUR LOCATION";
-        // list of cities
-        // choosing city 
-
-
-
-
-
-        //
-
+        book_texi a1;
+        a1.choose_journey(d,c);
     }
     else if(temp=='T')
     {
