@@ -157,13 +157,13 @@ void book_texi:: choose_journey(driver &d, car &c)
     cout<<endl<<"CHOOSE PICK UP location: ";
     for(int y=0;y<7;y++)
     {
-        cout<<"["<<y<<"]   "<<city[y];
+        cout<<endl<<"["<<y+1<<"]   "<<city[y];
     }
     cin>>city1;
     cout<<endl<<"CHOOSE DESTINATION: ";
     for(int y=0;y<7;y++)
     {
-        cout<<"["<<y<<"]   "<<city[y];
+        cout<<endl<<"["<<y+1<<"]   "<<city[y];
     }
     cin>>city2;
     if(city1==city2){cout<<"CHOOSE ANOTHER OPTION"; goto choose_city;}
@@ -253,21 +253,23 @@ void book_texi:: choose_journey(driver &d, car &c)
     }
 
     int pin,temp;
+    pin=(2024+city1+(2*city2)+city1*city2+distance);
     float gst,rent,total,discount;
     // calculation
-    rent=(16*(distance));
+    rent=(9*(distance));
     gst=(0.18*(rent));
     total=rent+gst;
     temp=total;
     discount=total-temp;
+
     
     /// format of reciept is here.....
     d.put_driverinfo();
     c.put_texiinfo();
-    cout<<endl<<"JOUREY:  FROM: "<<city1<<"    TO:"<<city2;
+    cout<<endl<<"JOUREY:  FROM: "<<city[city1]<<"    TO:"<<city[city2];
     cout<<endl<<"PIN: "<<pin;
     cout<<endl<<"TOTAL DISTANCE: "<<distance;
-    cout<<endl<<"RENT PER kM: 16 INR";     cout<<setw(35)<<"RENT= "<<rent<<"INR";
+    cout<<endl<<"RENT PER kM: 9 INR";     cout<<setw(35)<<"RENT= "<<rent<<"INR";
     cout<<endl<<"SERVICE CHARGE = 180 INR";cout<<setw(35)<<"+180 INR";
     cout<<endl<<"GST 8%";                  cout<<setw(35)<<"+ "<<gst<<"INR";
     cout<<endl<<"DISCOUNT ";               cout<<setw(35)<<"- "<<discount<<"INR";
