@@ -80,6 +80,7 @@ void USER:: login()
         {
             cout<<endl<<"You're Loged In successfully :";
             cout<<endl<<"WELCOME "<<name; 
+            //goto texibook;
         }
         else{
             cout<<endl<<"SORRY, PASSWORD MISMATCH, PLEASE ENTER CORRECT PASSWORD !!!";
@@ -131,6 +132,12 @@ void car:: add_texi()
 }
 
 // new class : for cities and caalculating etc.
+class texi_book
+{
+    public:
+    void print_reciept();
+
+};
 
 int main()
 {
@@ -166,12 +173,13 @@ int main()
         login:
         cout<<endl<<"Now LOGIN here:";
         int count=USER:: get_count();
-        //cout<<"*******  ?"<<count<<"|";
         u[0].login();
+
+        // ________texi booking system here__________
+        cout<<endl<<"CHOOSE YOUR LOCATION";
     }
     else if(temp=='T')
     {
-
         int count=USER:: get_count();
         car c[count];
         c[count].add_texi();
@@ -180,5 +188,6 @@ int main()
         cout<<"ERROR: PLEASE CHOOSE VALID OPTION ";
         goto menu;
     }
+    
     return 0;
 }
