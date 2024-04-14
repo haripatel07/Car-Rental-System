@@ -10,6 +10,10 @@
 using namespace std;
 
 //declaration of classes
+
+class USER;
+class driver;
+class car;
 int main();
 class USER
 {
