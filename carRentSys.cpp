@@ -11,6 +11,7 @@ using namespace std;
 
 //declaration of classes
 int main();
+
 class USER
 {
     string name, email;
@@ -24,12 +25,14 @@ class USER
     void new_user();
     string get_uname(){return username;}
     string get_pass(){return password;}
-    int get_count();
+    static int get_count();
     void login();
 };
 
 int USER:: user_count=0;
+
 int USER:: get_count(){return user_count;}
+
 // New user function
 void USER:: new_user()
 {
@@ -48,15 +51,17 @@ void USER:: new_user()
     cout<<endl<<"YOU HAVE ESUCCESSFULLY CREATED YOUR ACCOUNT";
     user_count++;
 }
+
+//login function;
 void USER:: login()
 {
     string temp_uname, temp_pass;
     cout<<endl<<"----------- LOGIN ----------";
     cout<<endl<<"Enter your USERNAME : ";
     cin>>temp_uname;
-    
+
     int flag=0;
-    for(int i=0;i<100;i++)
+    for(int i=0;i<(USER::get_count());i++)
     { 
        if(temp_uname==username)
        {
@@ -84,6 +89,8 @@ void USER:: login()
         
     }
 }
+
+//class for texi job applicats
 class driver
 {
     string d_name; 
@@ -92,6 +99,7 @@ class driver
     public:
     driver();
 };
+
 // default constructor, aautomaticaly call when Inheritated Child class nitialized
 driver:: driver()
 {
@@ -118,6 +126,8 @@ void car:: add_texi()
    cout<<endl<<"ENTER YOUT VEHICLE DETAILS"<<endl<<"Enter Car name :";
    cin>>car_name;
    cout<<"Enter Ragistred Vehicle Number: ";
+   cin>>vehicle_num;
+   cout<<"YOU'HAAVE BEEN RAGISTRED AN APPLLICATION  FOR TEXI JOB";
 }
 
 // new class : for cities and caalculating etc.
@@ -126,6 +136,7 @@ int main()
 {
     USER u[100];
     menu:
+    
     cout<<endl<<"-------------WELCOME TO CAR RENTAL PLATFORM-------------";
     cout<<endl<<"BOOK A CAB ? PRESS Y : ";
     cout<<endl<<"WANT TO BE A TEXI DRIVER ? PRESS T : ";
@@ -145,8 +156,8 @@ int main()
     
         else if(temp1=='Y')
         {
-            int count=0;
-              u[count].new_user();
+            int count=USER:: get_count();
+            u[count].new_user();
         }
         else{
            cout<<endl<<"ERROR: CHOOSE VAALID OPTION";
@@ -154,11 +165,16 @@ int main()
         }
         login:
         cout<<endl<<"Now LOGIN here:";
+        int count=USER:: get_count();
+        //cout<<"*******  ?"<<count<<"|";
         u[0].login();
     }
     else if(temp=='T')
     {
-        //call function new driver of class driver
+
+        int count=USER:: get_count();
+        car c[count];
+        c[count].add_texi();
     }
     else{
         cout<<"ERROR: PLEASE CHOOSE VALID OPTION ";
