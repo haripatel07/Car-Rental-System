@@ -99,8 +99,12 @@ class driver
     long int licence_num, cont_num, aadhar;
     public:
     driver();
+    void put_driverinfo();
 };
-
+void driver:: put_driverinfo()
+{
+    cout<<endl<<"Texi Driver: "<<d_name<<endl<<"Contact Number : "<<cont_num;
+}
 // default constructor, aautomaticaly call when Inheritated Child class nitialized
 driver:: driver()
 {
@@ -117,23 +121,30 @@ driver:: driver()
 }
 class car: public driver
 {  
-    string car_name;
+    string car_name, service_loc;
     long int vehicle_num;
     public:
     void add_texi();
+    void put_texiinfo();
 };
+void car:: put_texiinfo()
+{
+  cout<<endl<<"Car Name: "<<car_name<<endl<<"Vehicle Registred Number: "<<vehicle_num;
+}
 void car:: add_texi()
 {
    cout<<endl<<"ENTER YOUT VEHICLE DETAILS"<<endl<<"Enter Car name :";
    cin>>car_name;
    cout<<"Enter Ragistred Vehicle Number: ";
    cin>>vehicle_num;
-   cout<<"YOU'HAAVE BEEN RAGISTRED AN APPLLICATION  FOR TEXI JOB";
+   cout<<endl<<"Enter Service Location : ";
+   cout<<"YOU'HAVE BEEN RAGISTRED AN APPLLICATION  FOR TEXI JOB";
 }
 
 // new class : for cities and caalculating etc.
-class texi_book
+class book_texi
 {
+    string city[8];
     public:
     void print_reciept();
 
@@ -143,7 +154,6 @@ int main()
 {
     USER u[100];
     menu:
-    
     cout<<endl<<"-------------WELCOME TO CAR RENTAL PLATFORM-------------";
     cout<<endl<<"BOOK A CAB ? PRESS Y : ";
     cout<<endl<<"WANT TO BE A TEXI DRIVER ? PRESS T : ";
@@ -153,8 +163,8 @@ int main()
     {
         char temp1;
         menu1:
-        cout<<endl<<"LOGIN : PRESS L TO LOGIN";
-        cout<<endl<<"New User ? : PRESS Y";
+        cout<<endl<<"LOGIN : PRESS L TO LOGIN :";
+        cout<<endl<<"New User ? : PRESS Y :";
         cin>>temp1;
         if(temp1=='L')
         {
@@ -177,6 +187,15 @@ int main()
 
         // ________texi booking system here__________
         cout<<endl<<"CHOOSE YOUR LOCATION";
+        // list of cities
+        // choosing city 
+
+
+
+
+
+        //
+
     }
     else if(temp=='T')
     {
