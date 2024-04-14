@@ -18,13 +18,18 @@ class USER
     long int mob_num;
     string username;
     string password;
-    void new_user();
+    
     static int user_count; 
     public:
+    void new_user();
     string get_uname(){return username;}
     string get_pass(){return password;}
+    int get_count();
+    void login();
 };
+
 int USER:: user_count=0;
+int USER:: get_count(){return user_count;}
 // New user function
 void USER:: new_user()
 {
@@ -34,6 +39,8 @@ void USER:: new_user()
     cin>>age;
     cout<<endl<<"Enter Your Mobile Number :";
     cin>>mob_num;
+    cout<<endl<<"Enter your E-mail : ";
+    cin>>email;
     cout<<endl<<"Enter an Unique Username :";
     cin>>username;
     cout<<endl<<"Create a password for your account: ";
@@ -41,27 +48,39 @@ void USER:: new_user()
     cout<<endl<<"YOU HAVE ESUCCESSFULLY CREATED YOUR ACCOUNT";
     user_count++;
 }
-void login()
+void USER:: login()
 {
     string temp_uname, temp_pass;
-    cout<<endl<<"----------- SIGN UP ----------";
+    cout<<endl<<"----------- LOGIN ----------";
     cout<<endl<<"Enter your USERNAME : ";
     cin>>temp_uname;
-    cout<<endl<<"ENter your password: ";
-    cin>>temp_pass;
+    
     int flag=0;
     for(int i=0;i<100;i++)
     { 
-       //compare all usernames with temp_uname, if true then flag=0;
+       if(temp_uname==username)
+       {
+        flag=1;
+       }
     }
     if(flag==0)
     {
         cout<<endl<<"USERNAME NOT FOUND!! PLEASE ENTER VALID USERNAME or SIGN UP NEW USER IF NOT ";
     }
     else if(flag==1)
-    {
-        int flag2=0;
-        //compare passsword of user with entered passwrod(temp_pass), if true then, print login sucessfull.
+    {   pass_check:
+        cout<<endl<<"Enter your password: ";
+        cin>>temp_pass;
+        if(temp_pass==password)
+        {
+            cout<<endl<<"You're Loged In successfully :";
+            cout<<endl<<"WELCOME "<<name; 
+        }
+        else{
+            cout<<endl<<"SORRY, PASSWORD MISMATCH, PLEASE ENTER CORRECT PASSWORD !!!";
+
+            goto pass_check;
+        }
         
     }
 }
@@ -123,26 +142,19 @@ int main()
         {
             goto login;
         }
+    
         else if(temp1=='Y')
         {
-        // new user sign in function call
+            int count=0;
+              u[count].new_user();
         }
         else{
            cout<<endl<<"ERROR: CHOOSE VAALID OPTION";
            goto menu1;
         }
         login:
-        // now login here bcz user created 
         cout<<endl<<"Now LOGIN here:";
-        login();// login
-
-        // choosing city menu
-
-        // choosing locaations 
-
-        //calculate distance
-
-        // print reciept and booking success maassage
+        u[0].login();
     }
     else if(temp=='T')
     {
