@@ -6,6 +6,7 @@
 #include<iostream>
 #include<iomanip>
 #include<cstring>
+#include<vector>
 
 using namespace std;
 
@@ -14,6 +15,11 @@ using namespace std;
 class USER;
 class driver;
 class car;
+
+// Global declaration
+vector<USER> users;
+vector<driver> drivers;
+
 int main();
 class USER
 {
