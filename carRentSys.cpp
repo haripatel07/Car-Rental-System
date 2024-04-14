@@ -98,7 +98,7 @@ class driver
     int age;
     long int licence_num, cont_num, aadhar;
     public:
-    driver();
+    void add_driver();
     void put_driverinfo();
 };
 void driver:: put_driverinfo()
@@ -106,7 +106,7 @@ void driver:: put_driverinfo()
     cout<<endl<<"Texi Driver: "<<d_name<<endl<<"Contact Number : "<<cont_num;
 }
 // default constructor, aautomaticaly call when Inheritated Child class nitialized
-driver:: driver()
+void driver:: add_driver()
 {
     cout<<endl<<"Enter your name :";
     cin>>d_name;
@@ -138,6 +138,7 @@ void car:: add_texi()
    cout<<"Enter Ragistred Vehicle Number: ";
    cin>>vehicle_num;
    cout<<endl<<"Enter Service Location : ";
+   cin>>service_loc;
    cout<<"YOU'HAVE BEEN RAGISTRED AN APPLLICATION  FOR TEXI JOB";
 }
 
@@ -154,15 +155,15 @@ void book_texi:: choose_journey(driver &d, car &c)
     int city1,city2, distance;
     choose_city:
     cout<<endl<<"CHOOSE PICK UP location: ";
-    for(int y=0;y<8;y++)
+    for(int y=0;y<7;y++)
     {
-        cout<<"["<<y<<"]   "<<city[y];
+        cout<<endl<<"["<<y+1<<"]   "<<city[y];
     }
     cin>>city1;
     cout<<endl<<"CHOOSE DESTINATION: ";
-    for(int y=0;y<8;y++)
+    for(int y=0;y<7;y++)
     {
-        cout<<"["<<y<<"]   "<<city[y];
+        cout<<endl<<"["<<y+1<<"]   "<<city[y];
     }
     cin>>city2;
     if(city1==city2){cout<<"CHOOSE ANOTHER OPTION"; goto choose_city;}
@@ -252,21 +253,23 @@ void book_texi:: choose_journey(driver &d, car &c)
     }
 
     int pin,temp;
+    pin=(2024+city1+(2*city2)+city1*city2+distance);
     float gst,rent,total,discount;
     // calculation
-    rent=(16*(distance));
+    rent=(9*(distance));
     gst=(0.18*(rent));
     total=rent+gst;
     temp=total;
     discount=total-temp;
+
     
     /// format of reciept is here.....
     d.put_driverinfo();
     c.put_texiinfo();
-    cout<<endl<<"JOUREY:  FROM: "<<city1<<"    TO:"<<city2;
+    cout<<endl<<"JOUREY:  FROM: "<<city[city1-1]<<"    TO:"<<city[city2-1];
     cout<<endl<<"PIN: "<<pin;
     cout<<endl<<"TOTAL DISTANCE: "<<distance;
-    cout<<endl<<"RENT PER kM: 16 INR";     cout<<setw(35)<<"RENT= "<<rent<<"INR";
+    cout<<endl<<"RENT PER kM: 9 INR";     cout<<setw(35)<<"RENT= "<<rent<<"INR";
     cout<<endl<<"SERVICE CHARGE = 180 INR";cout<<setw(35)<<"+180 INR";
     cout<<endl<<"GST 8%";                  cout<<setw(35)<<"+ "<<gst<<"INR";
     cout<<endl<<"DISCOUNT ";               cout<<setw(35)<<"- "<<discount<<"INR";
@@ -274,10 +277,13 @@ void book_texi:: choose_journey(driver &d, car &c)
 }
 
 
-
 int main()
 {
-    USER u[100];
+    
+    int count=USER:: get_count();
+    car c[count];
+    USER u[count];
+    driver d[count];
     menu:
     cout<<endl<<"-------------WELCOME TO CAR RENTAL PLATFORM-------------";
     cout<<endl<<"BOOK A CAB ? PRESS Y : ";
@@ -313,13 +319,13 @@ int main()
         // ________texi booking system here__________
         cout<<endl<<"CHOOSE YOUR LOCATION";
         book_texi a1;
-        a1.choose_journey(d,c[0]);
+        a1.choose_journey(d[count], c[count]);
     }
     else if(temp=='T')
     {
-        int count=USER:: get_count();
-        car c[count];
         c[count].add_texi();
+        d[count].add_driver();
+        goto menu;
     }
     else{
         cout<<"ERROR: PLEASE CHOOSE VALID OPTION ";
