@@ -126,6 +126,9 @@ class book_taxi {
 public:
     void choose_journey(const driver& d, const car& c);
 };
+int generatePin(int city1, int city2, int distance) {
+    return 2024 + city1 + (2 * city2) + city1 * city2 + distance;
+}
 
 void book_taxi::choose_journey(const driver& d, const car& c) {
     int city1, city2, distance = 0;
@@ -176,7 +179,7 @@ void book_taxi::choose_journey(const driver& d, const car& c) {
     if ((city1 == 6 && city2 == 7) || (city1 == 7 && city2 == 6)) distance = 1541;
 
     // Calculating the PIN and fare
-    int pin = (2024 + city1 + (2 * city2) + city1 * city2 + distance);
+    int pin = generatePin(city1, city2, distance);
     float rent = 9 * distance, gst = 0.18 * rent, total = rent + gst;
 
     // Open a file for writing
