@@ -218,7 +218,16 @@ int main() {
     cout << "\nBOOK A CAB? PRESS Y";
     //cout << "\nWANT TO BE A TAXI DRIVER? PRESS T";
     char temp;
-    cin >> temp;
+    do {
+        cout << "\nBOOK A CAB? PRESS Y";
+        cout << "\nWANT TO BE A TAXI DRIVER? PRESS T";
+        cin >> temp;
+        temp = toupper(temp);
+        if (temp != 'Y' && temp != 'T') {
+            cout << "\nERROR: PLEASE CHOOSE A VALID OPTION.";
+        }
+    } while (temp != 'Y' && temp != 'T');
+
     if (temp == 'Y') {
         char temp1;
         menu1:
